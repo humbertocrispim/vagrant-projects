@@ -1,0 +1,12 @@
+- name: Plabooks para criaçao de ususarios
+  hosts: all
+  vars:
+    - server_name: servidor01
+    - user_name: analistadevops
+    - conf_file : /opt/app/app.conf
+  tasks:
+  - name: criando o ususario
+    become: true 
+    user: 
+      name: "{{ user_name }}"
+
