@@ -1,0 +1,48 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
+
+
+Vagrant.configure("2") do |config|
+
+  ##### DEFINE VM ANSIBLE #####
+  config.vm.define "ansible" do |vm1|
+  vm1.vm.hostname = "machine01"
+  vm1.vm.box = "generic/ubuntu2010"
+  vm1.vm.box_check_update = false
+  vm1.vm.network "private_network", ip: "192.168.123.30"
+  vm1.vm.provider :libvirt do |v|
+    v.memory = 1024
+    v.cpus = "2"
+    end
+  end
+
+
+  ##### DEFINE VM MACHINE01 #####
+  config.vm.define "machine01" do |vm2|
+  vm2.vm.hostname = "machine01"
+  vm2.vm.box = "debian/jessie64"
+  vm2.vm.box_check_update = false
+  vm2.vm.network "private_network", ip: "192.168.123.31"
+  vm2.vm.provider :libvirt do |v|
+    v.memory = 1024
+    v.cpus = "2"
+    end
+  end
+
+
+  ##### DEFINE VM MACHINE02 #####
+config.vm.define "machine02" do |vm3|
+    vm3.vm.hostname = "machine02"
+    vm3.vm.box = "centos/7"
+    vm3.vm.box_check_update = false
+    vm3.vm.network "private_network", ip: "192.168.123.32"
+    vm3.vm.provider :libvirt do |v|
+      v.memory = 1024
+      v.cpus = "2"
+    end
+  end
+end
+
+  
