@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
 
   ##### DEFINE VM ANSIBLE #####
   config.vm.define "ansible" do |vm1|
-  vm1.vm.hostname = "machine01"
+  vm1.vm.hostname = "ansible"
   vm1.vm.box = "generic/ubuntu2010"
   vm1.vm.box_check_update = false
   vm1.vm.network "private_network", ip: "192.168.123.30"
@@ -44,8 +44,5 @@ config.vm.define "machine02" do |vm3|
     end
   end
 end
-
-
-#test
 
 
